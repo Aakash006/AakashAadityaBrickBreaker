@@ -28,7 +28,7 @@ public class BrickBreakerFrame extends javax.swing.JFrame {
 
 
     private void initComponents() {
-
+        
         brickBreakerPanel1 = new brickbreaker.BrickBreakerPanel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

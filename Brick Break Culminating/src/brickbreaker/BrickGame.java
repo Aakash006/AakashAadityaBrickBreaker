@@ -22,9 +22,9 @@ public class BrickGame {
     private final Base base;
     private final Ball ball;
     private final Brick [] brick;
-    private  int x;
-    private  int y;     
-    private boolean collide, endGame, win; 
+    private  int valX;
+    private  int valY;     
+    private boolean collide, endGame, iswinner; 
     
      /* 
      * constructor that initializes all the instance variables of the base and creates the bricks
@@ -37,26 +37,26 @@ public class BrickGame {
         this.scorecount = 0;
         this.collide = false; 
         this.endGame = false;
-        this.win = false; 
+        this.iswinner = false; 
         this.numberoflives = 4; 
-        this.x = 20;
-        this.y = 60; 
+        this.valX = 20;
+        this.valY = 60; 
         //creates all the bricks in the game
         for (int i = 0; i< 34; i++){
-            brick[i] = new Brick(x,y,50,10);
-            x+=60;
+            brick[i] = new Brick(valX,valY,50,10);
+            valX+=60;
             //sets the bricks in 4 lines 
             if (i == 8){ 
-                x = 50;
-                y = 80;
+                valX = 50;
+                valY = 80;
             }
             if (i == 16){
-                x = 20;
-                y = 100;
+            	valX = 20;
+            	valY = 100;
             }
             if (i == 25){
-                x = 50; 
-                y = 120; 
+            	valX = 50; 
+            	valY = 120; 
             }
         } 
         
@@ -66,7 +66,7 @@ public class BrickGame {
     /*
      * checkPaddle method that checks if the ball has hit the paddle 
     */
-    public void checkPaddle() {
+    public void CheckBallHitPaddle() {
         //calculates coordinate differences between the ball and the paddle position
         int yDifference = base.getY() - (ball.getY()+ball.getRadius());
         int xDiffOne = (ball.getX()+ball.getRadius()) - base.getX();
@@ -101,7 +101,7 @@ public class BrickGame {
             ball.changeYDir();
             this.scorecount += 10;
             if (scorecount == 340){
-                this.win = true; 
+                this.iswinner = true; 
                 ball.resetBall();
             }
             return true;
@@ -112,7 +112,7 @@ public class BrickGame {
     /*
      * checkBrick method to see which brick is hit by the ball 
     */
-    public void checkBrick() {
+    public void CheckWhichBrickHit() {
         for (int i = 0; i<34;i++){
             if (brick[i].getBrick() == true) {
                  if (checkBrick(brick[i])) {
@@ -123,9 +123,9 @@ public class BrickGame {
     }
     
     /*
-     * checkWall method to check if the ball collides with the walls
+     * checkBallHitWall method to check if the ball collides with the walls
     */
-    public void checkWall() {
+    public void CheckBallHitWall() {
         if (ball.getX() <= 0) {
             ball.changeXDir();
             collide = false;
@@ -151,37 +151,37 @@ public class BrickGame {
      * checkCollisions method that checks all types of possible collisions 
     */
     public void checkCollisions() {
-        checkPaddle();
-        checkBrick();
-        checkWall();
+        CheckBallHitPaddle();
+        CheckWhichBrickHit();
+        CheckBallHitWall();
     }
     
     /* 
      * paint method to add graphics
-     * @param g - graphics variable used to set boundaries and draw strings
+     * @param f - graphics variable used to set boundaries and draw strings
      */    
-    public void paint(Graphics g) {
-       g.setFont(new Font("TimesRoman", Font.PLAIN, 15));
-       if ((endGame == false)&&(win == false)){
-            this.ball.paint(g);
-            this.base.paint(g);
-            g.setColor(Color.orange);
-            g.drawString("SCORE: ",20,30);
-            g.drawString(Integer.toString(this.scorecount),80,30);
-            g.drawString("LIVES: ",480,30);
-            g.drawString(Integer.toString(this.numberoflives),540,30);
-            g.setColor(Color.green);
-            g.drawString("BRICK BREAKER",230,30);
+    public void paint(Graphics f) {
+       f.setFont(new Font("TimesRoman", Font.PLAIN, 15));
+       if ((endGame == false)&&(iswinner == false)){
+            this.ball.paint(f);
+            this.base.paint(f);
+            f.setColor(Color.orange);
+            f.drawString("SCORE: ",20,30);
+            f.drawString(Integer.toString(this.scorecount),80,30);
+            f.drawString("LIVES: ",480,30);
+            f.drawString(Integer.toString(this.numberoflives),540,30);
+            f.setColor(Color.green);
+            f.drawString("BRICK BREAKER",230,30);
             
-            drawBricks(g);
-            g.drawLine(0,40,580,40);
+            drawBricks(f);
+            f.drawLine(0,40,580,40);
        }else if (endGame == true){
-            g.setColor(Color.green);
-            g.drawString("You lost :( better luck next time!",180,300);
+            f.setColor(Color.green);
+            f.drawString("You lost :( better luck next time!",180,300);
        }
-       if (win == true){
-            g.setColor(Color.green);
-            g.drawString("CONGRATULATIONS!! YOU WONN !! :D", 160, 300);
+       if (iswinner == true){
+            f.setColor(Color.green);
+            f.drawString("CONGRATULATIONS!! YOU WONN !! :D", 160, 300);
        }
     }
     
