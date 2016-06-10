@@ -16,8 +16,8 @@ public class Base {
     //instance variable and constants are created
     private int x;
     private int y;
-    private final int sizeX;
-    private final int sizeY;
+    private final int sizeofX;
+    private final int sizeofY;
     
     /* 
      * constructor that initializes all the instance variables of the ball
@@ -29,8 +29,8 @@ public class Base {
     public Base(int x, int y, int XSize, int YSize) {
         this.x = x;
         this.y = y;
-        this.sizeX = XSize;
-        this.sizeY = YSize;
+        this.sizeofX = XSize;
+        this.sizeofY = YSize;
     }
     
     /* 
@@ -54,7 +54,7 @@ public class Base {
      * @returns the vertical size of the base    
      */
     public int getYSize() {
-        return this.sizeY;
+        return this.sizeofY;
     }
     
     /*
@@ -62,7 +62,7 @@ public class Base {
      * @returns the horizontal size of the base    
      */
     public int getXSize() {
-        return this.sizeX;
+        return this.sizeofX;
     }
     
     /*
@@ -75,12 +75,12 @@ public class Base {
     
     /* 
      * Method to move the base 
-     * @param xChange for change in x-coordinate
-     * @param yChange for change in y-coordinate 
+     * @param ChangeofX for change in x-coordinate
+     * @param ChangeofY for change in y-coordinate 
      */
-    public void moveBase(int xChange, int yChange){
-        this.x += xChange;
-        this.y += yChange;
+    public void moveBase(int ChangeofX, int ChangeofY){
+        this.x += ChangeofX;
+        this.y += ChangeofY;
     }
     
     /*
@@ -97,7 +97,7 @@ public class Base {
      */
     public void paint(Graphics g){
         g.setColor(Color.orange);
-        g.fillRect(this.x, this.y, this.sizeX, this.sizeY);
+        g.fillRect(this.x, this.y, this.sizeofX, this.sizeofY);
     }
 }
 

@@ -73,7 +73,7 @@ public class BrickBreakerPanel extends javax.swing.JPanel {
     private void formKeyPressed(KeyEvent evt) {
         this.game.formKeyPressed(evt);
         this.repaint();
-    }//GEN-LAST:event_formKeyPressed
+    }
 
     private void formActionPerformed(ActionEvent evt) {
         this.game.formActionPerformed(evt);

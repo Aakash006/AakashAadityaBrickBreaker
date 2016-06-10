@@ -14,8 +14,8 @@ import java.awt.Graphics;
 
 public class Brick {
     //instance variables and constants are created
-    private final int x;
-    private final int y;
+    private final int xvalue;
+    private final int yvalue;
     private final int XSize;
     private final int YSize;
     private boolean brick;
@@ -27,9 +27,9 @@ public class Brick {
      * @param X for the horizontal length of the brick
      * @param Y for the vertical length of the brick
      */
-    public Brick(int x, int y, int XSize, int YSize) {
-        this.x = x;
-        this.y = y;
+    public Brick(int xvalue, int yvalue, int XSize, int YSize) {
+        this.xvalue = xvalue;
+        this.yvalue = yvalue;
         this.XSize = XSize;
         this.YSize = YSize;
         this.brick = true;
@@ -56,7 +56,7 @@ public class Brick {
      * @returns the x-coordinate of the brick   
      */
     public int getX() {
-        return this.x;
+        return this.xvalue;
     }
     
     /*
@@ -64,7 +64,7 @@ public class Brick {
      * @returns the y-coordinate of the brick   
      */
     public int getY() {
-        return this.y;
+        return this.yvalue;
     }
     
     /*
@@ -85,11 +85,11 @@ public class Brick {
     
     /* 
      * paint method to add graphics
-     * @param g - graphics variable used to set and fill colour of bricks
+     * @param a - graphics variable used to set and fill colour of bricks
      */    
-    public void paint(Graphics g) {
-        g.setColor(Color.CYAN);
-        g.fillRect(this.x, this.y, this.XSize, this.YSize);
+    public void paint(Graphics a) {
+        a.setColor(Color.BLUE);
+        a.fillRect(this.xvalue, this.yvalue, this.XSize, this.YSize);
     }
 }
 

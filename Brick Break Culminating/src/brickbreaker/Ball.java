@@ -14,37 +14,37 @@ import java.awt.Graphics;
 public class Ball {
     
     //instance variable are created
-    private int x;
-    private int y;
+    private int valueofX;
+    private int valueofY;
     private int radius;
-    private int dirX;
-    private int dirY;
+    private int directionofX;
+    private int directionofY;
     
     /* constructor that initializes all the instance variables of the ball
      * @param x for the x-coordinate of the ball 
      * @param y for the y-coordinate of the ball 
      * @param radius for the radius of the ball
     */
-    public Ball(int x, int y, int radius) {
-        this.x = x;
-        this.y = y;
+    public Ball(int valueofX, int valueofY, int radius) {
+        this.valueofX = valueofX;
+        this.valueofY = valueofY;
         this.radius = radius;
-        this.dirX = -1;
-        this.dirY = 1;
+        this.directionofX = -1;
+        this.directionofY = 1;
     }
     
     /* Method that accesses the y-coordinate of the ball 
      * @returns the y-coordinate of the ball    
     */
     public int getY() {
-        return this.y;
+        return this.valueofY;
     }
     
     /* Method that accesses the x-coordinate of the ball 
      * @returns the x-coordinate of the ball    
     */
     public int getX() {
-        return this.x;
+        return this.valueofX;
     }
     
     /* Method that accesses the radius of the ball 
@@ -58,66 +58,66 @@ public class Ball {
      * @returns the vertical direction of the ball    
     */
     public int getYDirection() {
-        return this.dirY;
+        return this.directionofY;
     }
     
     /*
      * Method that accesses the x-coordinate of the ball
      * @param x for x-coordinate
     */
-    public void setX(int x) {
-        this.x = x;
+    public void setX(int valueofX) {
+        this.valueofX = valueofX;
     }
     
     /*
      * Method that accesses the y-coordinate of the ball
      * @param y for y-coordinate
     */
-    public void setY(int y) {
-        this.y = y;
+    public void setY(int valueofY) {
+        this.valueofY = valueofY;
     }
     
     /*
      * Method that accesses the horizontal direction of the ball
      * @param x for horizontal direction
     */
-    public void setXDirection(int x) {
-        this.dirX = x;
+    public void setXDirection(int valueofX) {
+        this.directionofX = valueofX;
     }
     
     /*
      * Method that accesses the vertical direction of the ball
      * @param y for vertical direction
     */
-    public void setYDirection(int y) {
-        this.dirY = y;
+    public void setYDirection(int valueofY) {
+        this.directionofY = valueofY;
     }
     
     /* changeXDir method that changes the horizontal direction of the ball
     */
     public void changeXDir() {
-        if (this.dirX == 1) {
-            this.dirX = -1;
+        if (this.directionofX == 1) {
+            this.directionofX = -1;
         } else {
-            this.dirX = 1;
+            this.directionofX = 1;
         }
     }
     
     /* changeYDir method that changes the vertical direction of the ball
     */
     public void changeYDir() {
-        if (this.dirY == 1) {
-            this.dirY = -1;
+        if (this.directionofY == 1) {
+            this.directionofY = -1;
         } else {
-            this.dirY = 1;
+            this.directionofY = 1;
         }
     }
     
     /* resetBall method to reset the original position of the ball    
     */
     public void resetBall() {
-        this.x = 300;
-        this.y = 150;
+        this.valueofX = 300;
+        this.valueofY = 150;
     }
     
     /* update method for the change in direction of ball movement
@@ -125,23 +125,23 @@ public class Ball {
      *@param yChange - change in y
     */
     public void update(int xChange, int yChange){
-        if (this.dirX == 1) {
-            this.x += xChange;
+        if (this.directionofX == 1) {
+            this.valueofX += xChange;
         } else {
-            this.x -= xChange;
+            this.valueofX -= xChange;
         }
-        if (this.dirY == 1) {
-            this.y += yChange;
+        if (this.directionofY == 1) {
+            this.valueofY += yChange;
         } else {
-            this.y -= yChange;
+            this.valueofY -= yChange;
         }
     }
     
     /* paint method to add graphics
-     *@param g - graphics variable used to set and fill colour of ball
+     *@param u - graphics variable used to set and fill colour of ball
      */
-    public void paint(Graphics g) {
-        g.setColor(Color.red);
-        g.fillOval(this.x, this.y, this.radius, this.radius);
+    public void paint(Graphics u) {
+        u.setColor(Color.white);
+        u.fillOval(this.valueofX, this.valueofY, this.radius, this.radius);
     }
 }

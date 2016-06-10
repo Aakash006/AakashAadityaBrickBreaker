@@ -17,8 +17,8 @@ import java.awt.event.KeyEvent;
 
 public class BrickGame {
     
-    private int score;
-    private int lives;
+    private int scorecount;
+    private int numberoflives;
     private final Base base;
     private final Ball ball;
     private final Brick [] brick;
@@ -34,11 +34,11 @@ public class BrickGame {
         ball = new Ball(300,200,15); //creates the ball 
         base = new Base(250,570,80,10); //creates the base
         brick = new Brick[34]; //creates the array of brick
-        this.score = 0;
+        this.scorecount = 0;
         this.collide = false; 
         this.endGame = false;
         this.win = false; 
-        this.lives = 4; 
+        this.numberoflives = 4; 
         this.x = 20;
         this.y = 60; 
         //creates all the bricks in the game
@@ -99,8 +99,8 @@ public class BrickGame {
         if ((yDiff <= 0) && (xDiffFirst>= 0) && (xDiffSecond >= 0)) {
             collide = false;
             ball.changeYDir();
-            this.score += 10;
-            if (score == 340){
+            this.scorecount += 10;
+            if (scorecount == 340){
                 this.win = true; 
                 ball.resetBall();
             }
@@ -139,10 +139,10 @@ public class BrickGame {
             base.resetBase();
             ball.resetBall();
             //player loses one life if they miss the ball 
-            if ((this.lives <1)&&(this.score!=340)){
+            if ((this.numberoflives <1)&&(this.scorecount!=340)){
                 endGame = true;
             }else {
-                this.lives--;
+                this.numberoflives--;
             }
         }
     }
@@ -166,18 +166,18 @@ public class BrickGame {
             this.ball.paint(g);
             this.base.paint(g);
             g.setColor(Color.orange);
-            g.drawString("Score: ",20,30);
-            g.drawString(Integer.toString(this.score),80,30);
-            g.drawString("Lives: ",480,30);
-            g.drawString(Integer.toString(this.lives),540,30);
+            g.drawString("SCORE: ",20,30);
+            g.drawString(Integer.toString(this.scorecount),80,30);
+            g.drawString("LIVES: ",480,30);
+            g.drawString(Integer.toString(this.numberoflives),540,30);
             g.setColor(Color.green);
-            g.drawString("BRICK BREAKER ",230,30);
+            g.drawString("BRICK BREAKER",230,30);
             
             drawBricks(g);
             g.drawLine(0,40,580,40);
        }else if (endGame == true){
             g.setColor(Color.green);
-            g.drawString("You lost, better luck next time :D",180,300);
+            g.drawString("You lost :( better luck next time!",180,300);
        }
        if (win == true){
             g.setColor(Color.green);
